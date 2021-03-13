@@ -1,0 +1,9 @@
+version: "2.2"
+services:
+  reservation_manager_client:
+    container_name: reservation_manager_client
+    build:
+      context: ./client
+      target: production
+    ports:
+      - "5000:80"

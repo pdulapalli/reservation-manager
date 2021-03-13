@@ -1,0 +1,20 @@
+version: "2.2"
+services:
+  reservation_manager_client_dev:
+    container_name: reservation_manager_client_dev
+    build:
+      context: ./client
+      target: dev
+    ports:
+      - "1234:1234"
+    volumes:
+      - ./client/src:/workspace/src
+  reservation_manager_service_dev:
+    container_name: reservation_manager_service_dev
+    build:
+      context: ./service
+      target: dev
+    volumes:
+      - ./service/src:/workspace/src
+    ports:
+      - "3000:3000"
