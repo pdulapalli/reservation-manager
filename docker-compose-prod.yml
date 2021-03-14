@@ -5,6 +5,9 @@ services:
     build:
       context: ./client
       target: production
+      args:
+        SVC_HOSTNAME: reservation_manager_service
+        SVC_PORT: 3000
     ports:
       - "5000:80"
   reservation_manager_service:
