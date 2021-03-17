@@ -1,6 +1,6 @@
 {
   "name": "reservation-manager-client",
-  "version": "0.0.01",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
