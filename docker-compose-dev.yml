@@ -6,7 +6,7 @@ services:
       context: ./client
       target: dev
       args:
-        SVC_HOSTNAME: reservation_manager_service_dev
+        SVC_HOSTNAME: localhost
         SVC_PORT: 3000
     ports:
       - "1234:1234"
@@ -17,7 +17,34 @@ services:
     build:
       context: ./service
       target: dev
+    depends_on:
+      reservation_manager_db_dev:
+        condition: service_healthy
+    environment:
+      DB_HOST: reservation_manager_db_dev
+      DB_PORT: 5432
+      DB_NAME: manager
+      DB_USERNAME: postgres
+      DB_PASSWORD: supersecret
     volumes:
       - ./service/src:/workspace/src
     ports:
       - "3000:3000"
+  reservation_manager_db_dev:
+    container_name: reservation_manager_db_dev
+    image: postgres:12-alpine
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      POSTGRES_DB: manager
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: supersecret
+    volumes:
+      - reservation_manager_db_volume_dev:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+volumes:
+  reservation_manager_db_volume_dev:
