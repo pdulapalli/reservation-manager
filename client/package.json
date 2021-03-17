@@ -6,16 +6,27 @@
   "scripts": {
     "start": "PARCEL_WORKERS=1 parcel serve --port 1234 ./src/index.html",
     "build": "PARCEL_WORKERS=1 parcel build ./src/index.html",
+    "lint": "eslint \"src/**/*.[jt]s\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Anurag Dulapalli",
   "license": "UNLICENSED",
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "7.22.0",
+    "eslint-plugin-react": "7.22.0",
     "parcel-bundler": "1.12.3"
   },
   "dependencies": {
+    "@material-ui/core": "4.11.3",
+    "formik": "2.2.6",
+    "rc-time-picker": "3.7.3",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-datepicker": "3.6.0",
+    "react-dom": "17.0.1",
+    "react-router-dom": "5.2.0",
+    "react-select": "4.2.1",
+    "yup": "0.32.9"
   }
 }
